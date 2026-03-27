@@ -3,17 +3,17 @@
 :root {
   --bg: #08100b;
   --bg-soft: #0f1812;
-  --panel: rgba(15, 27, 19, 0.46);
-  --panel-strong: rgba(9, 17, 12, 0.56);
-  --line: rgba(201, 232, 205, 0.16);
-  --line-strong: rgba(173, 209, 178, 0.32);
+  --panel: rgba(15, 27, 19, 0.26);
+  --panel-strong: rgba(9, 17, 12, 0.34);
+  --line: rgba(201, 232, 205, 0.12);
+  --line-strong: rgba(173, 209, 178, 0.22);
   --text: #f3f8f2;
   --muted: #b9cdbb;
   --accent: #cfe8d0;
   --accent-soft: #8fb392;
   --hero-image: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1800&q=80");
-  --shadow-lg: 0 30px 90px rgba(0, 0, 0, 0.45);
-  --shadow-md: 0 18px 50px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 42px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.14);
   --radius-lg: 0;
   --radius-md: 0;
   --radius-sm: 0;
@@ -78,7 +78,7 @@ button {
 .section-dark {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 28%),
-    linear-gradient(180deg, rgba(8, 16, 11, 0.28), rgba(8, 16, 11, 0.46));
+    linear-gradient(180deg, rgba(8, 16, 11, 0.18), rgba(8, 16, 11, 0.32));
 }
 
 .section-head {
@@ -125,15 +125,15 @@ button {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(18px);
-  background: rgba(10, 18, 12, 0.22);
+  background: rgba(10, 18, 12, 0.14);
   border-bottom: 1px solid transparent;
   transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .site-header.scrolled {
-  background: rgba(10, 18, 12, 0.42);
-  border-color: rgba(173, 209, 178, 0.16);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.2);
+  background: rgba(10, 18, 12, 0.24);
+  border-color: rgba(173, 209, 178, 0.12);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 }
 
 .nav-shell {
@@ -194,7 +194,8 @@ button {
 .main-nav a {
   padding: 10px 14px;
   border-radius: 0;
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  border: 1px solid transparent;
 }
 
 .main-nav a:hover,
@@ -206,7 +207,8 @@ button {
 
 .main-nav a:hover,
 .main-nav a:focus-visible {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(173, 209, 178, 0.14);
 }
 
 .menu-toggle {
@@ -237,15 +239,15 @@ button {
 
 .hero-media {
   background:
-    linear-gradient(135deg, rgba(7, 7, 7, 0.36), rgba(7, 7, 7, 0.22)),
+    linear-gradient(135deg, rgba(7, 7, 7, 0.24), rgba(7, 7, 7, 0.14)),
     var(--hero-image) center center / cover no-repeat;
   transform: scale(1.02);
 }
 
 .hero-overlay {
   background:
-    linear-gradient(180deg, rgba(6, 10, 7, 0.14) 0%, rgba(6, 10, 7, 0.36) 100%),
-    radial-gradient(circle at 20% 20%, rgba(143, 179, 146, 0.2), transparent 38%);
+    linear-gradient(180deg, rgba(6, 10, 7, 0.08) 0%, rgba(6, 10, 7, 0.24) 100%),
+    radial-gradient(circle at 20% 20%, rgba(143, 179, 146, 0.14), transparent 38%);
 }
 
 .hero-shell {
@@ -329,20 +331,20 @@ button {
   min-height: 100%;
   padding: 30px 24px 24px;
   border-radius: 0;
-  background: rgba(10, 18, 12, 0.24);
+  background: linear-gradient(180deg, rgba(10, 18, 12, 0.16), rgba(10, 18, 12, 0.24));
   box-shadow: var(--shadow-md);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   color: var(--text);
   transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero-project-card:hover,
 .hero-project-card:focus-within {
-  transform: translateY(-4px);
-  border-color: rgba(173, 209, 178, 0.42);
-  background: rgba(10, 18, 12, 0.34);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+  transform: translateY(-2px);
+  border-color: rgba(173, 209, 178, 0.2);
+  background: linear-gradient(180deg, rgba(10, 18, 12, 0.18), rgba(10, 18, 12, 0.28));
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
 .hero-project-card img,
@@ -358,8 +360,8 @@ button {
   border-radius: 0;
   display: grid;
   place-items: center;
-  background: linear-gradient(180deg, rgba(79, 111, 82, 0.62), rgba(207, 232, 208, 0.08));
-  border: 1px solid rgba(173, 209, 178, 0.24);
+  background: linear-gradient(180deg, rgba(79, 111, 82, 0.32), rgba(207, 232, 208, 0.04));
+  border: 1px solid rgba(173, 209, 178, 0.16);
   font-family: "Cormorant Garamond", serif;
   font-size: 1.6rem;
   letter-spacing: 0.08em;
@@ -398,8 +400,8 @@ button {
 
 .project-section {
   background:
-    radial-gradient(circle at top right, rgba(143, 179, 146, 0.1), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(10, 18, 12, 0.34));
+    radial-gradient(circle at top right, rgba(143, 179, 146, 0.07), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(10, 18, 12, 0.24));
 }
 
 .project-detail-hero .hero-shell {
@@ -417,7 +419,7 @@ button {
   background: var(--panel);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-md);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
 }
 
 .project-detail-brand {
@@ -453,7 +455,7 @@ button {
   background: var(--panel);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-md);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
   border-radius: var(--radius-lg);
 }
 
@@ -566,28 +568,32 @@ button {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 52px;
-  padding: 0 22px;
+  min-height: 50px;
+  padding: 0 20px;
   border-radius: 0;
   font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.84rem;
   cursor: pointer;
   transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
 .btn:hover,
 .btn:focus-visible {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .btn-primary {
-  color: #122016;
-  background: linear-gradient(135deg, #dff1e0, #a9c9ac);
+  color: #ecf2eb;
+  background: linear-gradient(135deg, rgba(93, 132, 98, 0.88), rgba(79, 111, 82, 0.92));
+  border: 1px solid rgba(207, 232, 208, 0.18);
 }
 
 .btn-secondary {
   color: var(--text);
-  background: rgba(79, 111, 82, 0.16);
-  border: 1px solid rgba(173, 209, 178, 0.2);
+  background: rgba(79, 111, 82, 0.08);
+  border: 1px solid rgba(173, 209, 178, 0.14);
 }
 
 .btn-block {
@@ -704,7 +710,7 @@ button {
   border-radius: 0;
   overflow: hidden;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: var(--shadow-md);
   transform: translateY(0);
   transition: transform 0.3s ease, border-color 0.3s ease;
@@ -721,8 +727,8 @@ button {
 
 .gallery-item:hover,
 .gallery-item:focus-visible {
-  transform: translateY(-4px);
-  border-color: rgba(173, 209, 178, 0.32);
+  transform: translateY(-2px);
+  border-color: rgba(173, 209, 178, 0.18);
 }
 
 .gallery-item img {
@@ -735,7 +741,7 @@ button {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 35%, rgba(6, 6, 6, 0.78) 100%);
+  background: linear-gradient(180deg, transparent 38%, rgba(6, 6, 6, 0.56) 100%);
 }
 
 .gallery-item-label {
@@ -840,8 +846,8 @@ button {
   gap: 16px;
   padding: 16px 18px;
   border-radius: 0;
-  background: rgba(10, 18, 12, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 18, 12, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .contact-icon {
@@ -851,7 +857,7 @@ button {
   display: grid;
   place-items: center;
   border-radius: 0;
-  background: rgba(143, 179, 146, 0.14);
+  background: rgba(143, 179, 146, 0.1);
   color: var(--accent);
 }
 
@@ -877,15 +883,15 @@ button {
   border-radius: 0;
   padding: 15px 16px;
   color: var(--text);
-  background: rgba(10, 18, 12, 0.18);
+  background: rgba(10, 18, 12, 0.1);
   outline: none;
   transition: border-color 0.25s ease, background 0.25s ease;
 }
 
 .form-card input:focus,
 .form-card textarea:focus {
-  border-color: rgba(173, 209, 178, 0.34);
-  background: rgba(79, 111, 82, 0.16);
+  border-color: rgba(173, 209, 178, 0.24);
+  background: rgba(79, 111, 82, 0.12);
 }
 
 .form-response {
@@ -896,8 +902,8 @@ button {
 
 .site-footer {
   padding: 28px 0 36px;
-  border-top: 1px solid rgba(173, 209, 178, 0.16);
-  background: rgba(10, 18, 12, 0.34);
+  border-top: 1px solid rgba(173, 209, 178, 0.1);
+  background: rgba(10, 18, 12, 0.18);
 }
 
 .footer-shell {
@@ -935,9 +941,9 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 0;
-  background: linear-gradient(135deg, #5b8a60, #4f6f52);
+  background: linear-gradient(135deg, rgba(93, 132, 98, 0.94), rgba(79, 111, 82, 0.94));
   color: #fff;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
 }
 
 .lightbox {
@@ -948,7 +954,7 @@ button {
   place-items: center;
   gap: 18px;
   padding: 24px;
-  background: rgba(8, 8, 8, 0.92);
+  background: rgba(8, 8, 8, 0.84);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
@@ -983,9 +989,9 @@ button {
   position: absolute;
   padding: 14px 18px;
   border-radius: 0;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   cursor: pointer;
 }
 
@@ -1082,8 +1088,8 @@ button {
     align-items: stretch;
     padding: 14px;
     border-radius: 0;
-    background: rgba(10, 18, 12, 0.46);
-    border: 1px solid rgba(173, 209, 178, 0.14);
+    background: rgba(10, 18, 12, 0.26);
+    border: 1px solid rgba(173, 209, 178, 0.1);
     box-shadow: var(--shadow-lg);
   }
 
