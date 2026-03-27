@@ -3,112 +3,237 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alma Mater Sur</title>
+  <title>Alma Matter Sur | Parcelas premium en el sur de Chile</title>
+  <meta
+    name="description"
+    content="Landing page de Alma Matter Sur para vender las ultimas unidades disponibles de tres proyectos exclusivos de parcelas en el sur de Chile."
+  />
+  <meta name="theme-color" content="#111111" />
+  <meta property="og:title" content="Alma Matter Sur | Parcelas premium en el sur de Chile" />
+  <meta
+    property="og:description"
+    content="Conoce tres proyectos exclusivos de parcelas, revisa galerias, unidades disponibles y agenda una visita."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <header class="site-header" id="top">
-    <div class="container nav-container">
-      <div class="brand">
-        <h1>Alma Mater Sur</h1>
-        <small>Formación, cultura y comunidad</small>
-      </div>
-      <nav class="main-nav" aria-label="Menú principal">
-        <a href="#presentacion">Inicio</a>
-        <a href="#about">Nosotros</a>
-        <a href="#programas">Programas</a>
-        <a href="#eventos">Eventos</a>
+    <div class="container nav-shell">
+      <a class="brand" href="#hero" aria-label="Ir al inicio de Alma Matter Sur">
+        <span class="brand-mark">AMS</span>
+        <span class="brand-copy">
+          <strong id="brandName">Alma Matter Sur</strong>
+          <small id="brandTagline">Parcelas premium en el sur de Chile</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navegacion principal">
+        <a href="#hero">Inicio</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#galerias">Galerias</a>
+        <a href="#unidades">Unidades</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav">
+        Menu
+      </button>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container hero-content">
-      <h2>Bienvenidos a Alma Mater Sur</h2>
-      <p>Conecta, aprende y crece con nuestra propuesta educativa diseñada para la comunidad del sur.</p>
-      <a class="btn" href="#programas">Explorar programas</a>
+  <section class="hero" id="hero">
+    <div class="hero-media"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-shell">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Ultimas unidades disponibles</p>
+        <h1>Tres proyectos exclusivos de parcelas para invertir en el sur de Chile.</h1>
+        <p class="hero-text">
+          Una propuesta sobria, natural y confiable para presentar tus proyectos con foco comercial,
+          galeria por proyecto y unidades disponibles listas para actualizar.
+        </p>
+      </div>
+
+      <div class="hero-panel reveal">
+        <div class="hero-projects" id="heroProjects">
+          <!-- Render dinamico desde js/data.js -->
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#proyectos">Agenda tu visita</a>
+          <a class="btn btn-secondary" href="#contacto">Contactar ejecutivo</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <main class="container">
-    <section id="presentacion" class="card">
-      <h2>Un nuevo comienzo</h2>
-      <p>En Alma Mater Sur creamos un espacio con recursos, talleres y apoyo académico para estudiantes, familias y educadores.</p>
-      <ul>
-        <li>Campañas de inclusión educativa.</li>
-        <li>Formación continua para docentes.</li>
-        <li>Acompañamiento psicológico y vocacional.</li>
-      </ul>
-    </section>
-
-    <section id="about" class="card">
-      <h2>Sobre nosotros</h2>
-      <p>Somos una iniciativa del sur que integra escuelas, universidades y organizaciones civiles para impulsar el desarrollo local.</p>
-      <p>Nuestra misión es facilitar acceso gratuito a contenido de calidad y fortalecer redes de apoyo.</p>
-    </section>
-
-    <section id="programas" class="card cards-grid">
-      <h2>Programas</h2>
-      <article class="program-card">
-        <h3>Talleres STEM</h3>
-        <p>Actividades prácticas de ciencia, tecnología, ingeniería y matemáticas para chicos y chicas de 8 a 16 años.</p>
-      </article>
-      <article class="program-card">
-        <h3>Desarrollo docente</h3>
-        <p>Capacitaciones en metodologías activos, tecnologías educativas y gestión de aula.</p>
-      </article>
-      <article class="program-card">
-        <h3>Mentoría vocacional</h3>
-        <p>Acompañamos el paso a la universidad y al mundo laboral con orientadores especializados.</p>
-      </article>
-    </section>
-
-    <section id="eventos" class="card">
-      <h2>Eventos próximos</h2>
-      <div class="event-grid">
-        <div class="event-item">
-          <h4>Feria de Ciencias</h4>
-          <p>18 de mayo - Centro cultural Sur.</p>
+  <main>
+    <section class="section section-dark" id="proyectos">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Portafolio activo</p>
+          <h2>Proyectos destacados</h2>
+          <p>
+            Cada bloque se alimenta desde un arreglo de datos editable para que puedas cambiar nombres,
+            logos, imagenes, textos y disponibilidad sin rehacer la maqueta.
+          </p>
         </div>
-        <div class="event-item">
-          <h4>Jornada de tutores</h4>
-          <p>30 de mayo - streaming en vivo.</p>
-        </div>
-        <div class="event-item">
-          <h4>Expo de proyectos</h4>
-          <p>10 de junio - Escuela Técnica 3.</p>
+
+        <div class="project-grid" id="projectCards">
+          <!-- Render dinamico -->
         </div>
       </div>
     </section>
 
-    <section id="contacto" class="card">
-      <h2>Contacto</h2>
-      <p>¿Tienes preguntas o deseas sumarte como voluntario? Escríbenos.</p>
-      <form id="contactForm">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required />
+    <section class="section" id="galerias">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Vista comercial</p>
+          <h2>Galerias por proyecto</h2>
+          <p>
+            Selecciona un proyecto para mostrar solo su galeria. Las imagenes son placeholders elegantes y
+            luego puedes reemplazarlas desde el archivo de datos.
+          </p>
+        </div>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required />
+        <div class="tabs reveal" id="galleryTabs" role="tablist" aria-label="Selector de galeria por proyecto">
+          <!-- Render dinamico -->
+        </div>
 
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+        <div class="gallery-panel reveal" id="galleryPanel">
+          <!-- Render dinamico -->
+        </div>
+      </div>
+    </section>
 
-        <button type="submit" class="btn">Enviar mensaje</button>
-      </form>
-      <p class="form-response" id="response"></p>
+    <section class="section section-dark" id="unidades">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Disponibilidad</p>
+          <h2>Ultimas unidades por proyecto</h2>
+          <p>
+            Cambia entre proyectos para revisar lotes, metraje, estado, caracteristicas y accesos rapidos a
+            contacto.
+          </p>
+        </div>
+
+        <div class="tabs reveal" id="unitTabs" role="tablist" aria-label="Selector de unidades por proyecto">
+          <!-- Render dinamico -->
+        </div>
+
+        <div class="units-panel reveal" id="unitsPanel">
+          <!-- Render dinamico -->
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-strip">
+      <div class="container cta-strip-shell reveal">
+        <div>
+          <p class="eyebrow">Cierre comercial</p>
+          <h2>Agenda una visita o solicita informacion de las ultimas unidades.</h2>
+        </div>
+        <div class="cta-strip-actions">
+          <a class="btn btn-primary" href="#contacto">Solicitar informacion</a>
+          <a class="btn btn-secondary" href="#galerias">Ver galerias</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Contacto</p>
+          <h2>Atencion comercial para Alma Matter Sur</h2>
+          <p>
+            Deja aqui tus datos para solicitar precios, condiciones de compra, agenda de visitas y material
+            actualizado de cada proyecto.
+          </p>
+        </div>
+
+        <div class="contact-shell">
+          <article class="contact-card reveal">
+            <h3>Agenda una visita</h3>
+            <p class="contact-lead">Solicita informacion de las ultimas unidades disponibles.</p>
+            <div class="contact-list" id="contactList">
+              <!-- Render dinamico -->
+            </div>
+          </article>
+
+          <article class="form-card reveal">
+            <form id="contactForm" novalidate>
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+
+              <label for="correo">Correo</label>
+              <input id="correo" name="correo" type="email" placeholder="tu@correo.cl" required />
+
+              <label for="telefono">Telefono</label>
+              <input id="telefono" name="telefono" type="tel" placeholder="+56 9 XXXX XXXX" required />
+
+              <label for="mensaje">Mensaje</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="5"
+                placeholder="Quiero informacion sobre las ultimas unidades disponibles."
+                required
+              ></textarea>
+
+              <button class="btn btn-primary btn-block" type="submit">Solicitar informacion</button>
+              <p class="form-response" id="formResponse" aria-live="polite"></p>
+            </form>
+          </article>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2026 Alma Mater Sur. Todos los derechos reservados.</p>
-      <small>Diseñado para aprendizaje comunitario y cooperación educativa.</small>
+    <div class="container footer-shell">
+      <div class="footer-brand">
+        <span class="brand-mark">AMS</span>
+        <div>
+          <strong id="footerBrandName">Alma Matter Sur</strong>
+          <p id="footerBrandTagline">Parcelas premium en el sur de Chile</p>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Enlaces del footer">
+        <a href="#hero">Inicio</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#galerias">Galerias</a>
+        <a href="#unidades">Unidades</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="footer-meta" id="footerMeta">
+        <!-- Render dinamico -->
+      </div>
     </div>
   </footer>
 
+  <a class="whatsapp-float" id="whatsAppFloat" href="#contacto" target="_blank" rel="noreferrer">
+    <span>WhatsApp</span>
+  </a>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Cerrar galeria">Cerrar</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" type="button" aria-label="Imagen anterior">Anterior</button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImage" src="" alt="" />
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button" aria-label="Imagen siguiente">Siguiente</button>
+  </div>
+
+  <script src="js/data.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
