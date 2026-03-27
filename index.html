@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alma Mater Sur</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav-container">
+      <div class="brand">
+        <h1>Alma Mater Sur</h1>
+        <small>Formación, cultura y comunidad</small>
+      </div>
+      <nav class="main-nav" aria-label="Menú principal">
+        <a href="#presentacion">Inicio</a>
+        <a href="#about">Nosotros</a>
+        <a href="#programas">Programas</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h2>Bienvenidos a Alma Mater Sur</h2>
+      <p>Conecta, aprende y crece con nuestra propuesta educativa diseñada para la comunidad del sur.</p>
+      <a class="btn" href="#programas">Explorar programas</a>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="presentacion" class="card">
+      <h2>Un nuevo comienzo</h2>
+      <p>En Alma Mater Sur creamos un espacio con recursos, talleres y apoyo académico para estudiantes, familias y educadores.</p>
+      <ul>
+        <li>Campañas de inclusión educativa.</li>
+        <li>Formación continua para docentes.</li>
+        <li>Acompañamiento psicológico y vocacional.</li>
+      </ul>
+    </section>
+
+    <section id="about" class="card">
+      <h2>Sobre nosotros</h2>
+      <p>Somos una iniciativa del sur que integra escuelas, universidades y organizaciones civiles para impulsar el desarrollo local.</p>
+      <p>Nuestra misión es facilitar acceso gratuito a contenido de calidad y fortalecer redes de apoyo.</p>
+    </section>
+
+    <section id="programas" class="card cards-grid">
+      <h2>Programas</h2>
+      <article class="program-card">
+        <h3>Talleres STEM</h3>
+        <p>Actividades prácticas de ciencia, tecnología, ingeniería y matemáticas para chicos y chicas de 8 a 16 años.</p>
+      </article>
+      <article class="program-card">
+        <h3>Desarrollo docente</h3>
+        <p>Capacitaciones en metodologías activos, tecnologías educativas y gestión de aula.</p>
+      </article>
+      <article class="program-card">
+        <h3>Mentoría vocacional</h3>
+        <p>Acompañamos el paso a la universidad y al mundo laboral con orientadores especializados.</p>
+      </article>
+    </section>
+
+    <section id="eventos" class="card">
+      <h2>Eventos próximos</h2>
+      <div class="event-grid">
+        <div class="event-item">
+          <h4>Feria de Ciencias</h4>
+          <p>18 de mayo - Centro cultural Sur.</p>
+        </div>
+        <div class="event-item">
+          <h4>Jornada de tutores</h4>
+          <p>30 de mayo - streaming en vivo.</p>
+        </div>
+        <div class="event-item">
+          <h4>Expo de proyectos</h4>
+          <p>10 de junio - Escuela Técnica 3.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="card">
+      <h2>Contacto</h2>
+      <p>¿Tienes preguntas o deseas sumarte como voluntario? Escríbenos.</p>
+      <form id="contactForm">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+        <button type="submit" class="btn">Enviar mensaje</button>
+      </form>
+      <p class="form-response" id="response"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Alma Mater Sur. Todos los derechos reservados.</p>
+      <small>Diseñado para aprendizaje comunitario y cooperación educativa.</small>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

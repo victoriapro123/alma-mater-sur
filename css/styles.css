@@ -1,0 +1,44 @@
+/* Alma Mater Sur - estilo completo */
+* {box-sizing: border-box; margin: 0; padding: 0;}
+body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7fb; color: #2a3140; line-height: 1.6;}
+.container {width: min(1140px, 95%); margin: 0 auto; padding: 0 0 2rem;}
+.nav-container {display: flex; align-items: center; justify-content: space-between; gap: 1rem;}
+.brand h1 {font-size: 1.4rem; margin-bottom: 0.1rem;}
+.brand small {display: block; font-size: 0.8rem; color: #d4f4ee;}
+.main-nav {display: flex; gap: 1rem; flex-wrap: wrap;}
+.main-nav a {color: #fff; text-decoration: none; font-weight: 600; padding: .45rem .65rem; border-radius: 5px; transition: 0.2s;}
+.main-nav a:hover {background: rgba(255,255,255,0.15);}
+.menu-toggle {display: none; font-size: 1.2rem; border: 1px solid #fff; background: rgba(255,255,255,0.15); color: #fff; border-radius: 6px; padding: .35rem .55rem; cursor: pointer;}
+.site-header {background: linear-gradient(120deg, #2b4d8b, #009688); color: #fff; padding: 1.1rem 0; position: sticky; top: 0; z-index: 10;}
+.hero {background: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1567&q=80') center/cover no-repeat; padding: 6rem 0; color: #fff; text-shadow: 0 6px 18px rgba(0,0,0,.4);}
+.hero-content {background: rgba(15, 24, 46, 0.56); border-radius: 12px; padding: 2rem; text-align: center;}
+.hero h2 {font-size: 2rem; margin-bottom: .8rem;}
+.hero p {font-size: 1.1rem;}
+.card {background: #fff; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,.08); margin: 1.25rem 0; padding: 1.25rem;}
+.card h2 {margin-bottom: .75rem; color: #2b4d8b;}
+.cards-grid {display: grid; gap: 1rem;}
+.program-card {border: 1px solid #e0eaf2; border-radius: 8px; padding: 1rem; transition: transform .2s ease, box-shadow .2s ease;}
+.program-card:hover {transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,.08);}
+.event-grid {display: grid; gap: 1rem;}
+.event-item {background: #f1f9ff; border-left: 4px solid #009688; border-radius: 8px; padding: 1rem;}
+ul {list-style: disc inside; margin-left: 1rem;}
+a.btn, button.btn {display: inline-block; margin-top: .75rem; text-decoration: none; background: #2b4d8b; color: #fff; border: 0; padding: .75rem 1.1rem; border-radius: 6px; cursor: pointer; transition: .2s ease-in-out;}
+a.btn:hover, button.btn:hover {background: #1f3b6e;}
+.form-response {margin-top: .8rem; font-weight: bold; color: #2b4d8b;}
+label {display: block; margin-top: .75rem; color: #444; font-weight: 600;}
+input, textarea {width: 100%; border: 1px solid #ccd4db; border-radius: 6px; padding: .7rem; margin-top: .25rem;}
+.site-footer {background: #202020; color: #ddd; text-align: center; padding: 1.25rem 0; margin-top: 1.5rem;}
+.site-footer small {display: block; margin-top: .5rem; color: #a8b1bb;}
+@media (min-width: 768px) {
+  .hero h2 {font-size: 2.5rem;}
+  .hero p {font-size: 1.2rem;}
+  .cards-grid {grid-template-columns: repeat(3, minmax(0, 1fr));}
+  .event-grid {grid-template-columns: repeat(3, minmax(0, 1fr));}
+}
+@media (max-width: 768px) {
+  .main-nav {display: none; flex-direction: column; background: rgba(0,0,0,0.45); border-radius: 8px; padding: .5rem; position: absolute; right: 1rem; top: 5rem; min-width: 180px;}
+  .main-nav.open {display: flex;}
+  .menu-toggle {display: inline-block;}
+  .nav-container {align-items: flex-start;}
+}
+html {scroll-behavior: smooth;}
