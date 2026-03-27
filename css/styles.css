@@ -295,13 +295,13 @@ button {
 
 .site-header + .hero .hero-shell {
   min-height: 100svh;
-  padding-top: 112px;
-  padding-bottom: 20px;
+  padding-top: 154px;
+  padding-bottom: 42px;
 }
 
 .hero:not(.project-detail-hero) .hero-shell {
-  justify-content: flex-start;
-  gap: 16px;
+  justify-content: center;
+  gap: 26px;
 }
 
 .hero:not(.project-detail-hero) .hero-copy {
@@ -336,8 +336,8 @@ button {
 
 .hero:not(.project-detail-hero) .hero-copy h1 {
   max-width: 920px;
-  font-size: clamp(2.5rem, 4.2vw, 4.1rem);
-  line-height: 0.96;
+  font-size: clamp(3rem, 5.3vw, 5rem);
+  line-height: 0.94;
   text-shadow: 0 10px 26px rgba(0, 0, 0, 0.34);
 }
 
@@ -387,7 +387,7 @@ button {
 .hero-projects {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(14px, 1.6vw, 22px);
+  gap: clamp(18px, 2vw, 28px);
 }
 
 .hero-project-card {
@@ -409,9 +409,9 @@ button {
 
 .hero-project-visual {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  min-height: clamp(160px, 16vw, 220px);
-  margin: 0 0 14px;
+  aspect-ratio: 5 / 4;
+  min-height: clamp(220px, 24vw, 310px);
+  margin: 0 0 20px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(10, 18, 12, 0.1);
@@ -443,7 +443,7 @@ button {
 .hero-project-card span,
 .hero-project-line,
 .hero-card-btn {
-  padding-inline: 20px;
+  padding-inline: 24px;
 }
 
 .logo-placeholder {
@@ -465,7 +465,7 @@ button {
 .unit-card h3 {
   display: block;
   font-family: "Cormorant Garamond", serif;
-  font-size: 1.55rem;
+  font-size: 1.7rem;
   font-weight: 600;
   line-height: 1.02;
 }
@@ -480,19 +480,19 @@ button {
 }
 
 .hero-project-line {
-  margin: 12px 0 16px;
+  margin: 16px 0 22px;
   color: rgba(246, 241, 232, 0.82);
-  font-size: 0.88rem;
+  font-size: 0.95rem;
 }
 
 .hero-project-facts {
   display: grid;
-  gap: 6px;
-  margin: 12px 0 0;
-  padding: 0 20px;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 0 24px;
   list-style: none;
   color: rgba(246, 241, 232, 0.72);
-  font-size: 0.78rem;
+  font-size: 0.84rem;
 }
 
 .hero-project-facts li {
@@ -741,7 +741,7 @@ button {
 
 .hero-actions,
 .cta-strip-actions {
-  margin-top: 18px;
+  margin-top: 28px;
   display: flex;
   justify-content: center;
   gap: 14px;
