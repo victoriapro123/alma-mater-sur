@@ -2,25 +2,20 @@ const appConfig = window.siteConfig || {};
 const projectData = window.projects || [];
 
 const state = {
-  galleryProjectId: projectData[0]?.id || "",
-  unitsProjectId: projectData[0]?.id || "",
   lightboxProjectId: projectData[0]?.id || "",
   lightboxIndex: 0
 };
 
 const refs = {
   heroProjects: document.getElementById("heroProjects"),
-  projectCards: document.getElementById("projectCards"),
-  galleryTabs: document.getElementById("galleryTabs"),
-  galleryPanel: document.getElementById("galleryPanel"),
-  unitTabs: document.getElementById("unitTabs"),
-  unitsPanel: document.getElementById("unitsPanel"),
+  projectSections: document.getElementById("projectSections"),
   contactList: document.getElementById("contactList"),
   footerMeta: document.getElementById("footerMeta"),
   form: document.getElementById("contactForm"),
   formResponse: document.getElementById("formResponse"),
   menuToggle: document.getElementById("menuToggle"),
   mainNav: document.getElementById("mainNav"),
+  footerNav: document.getElementById("footerNav"),
   header: document.querySelector(".site-header"),
   lightbox: document.getElementById("lightbox"),
   lightboxImage: document.getElementById("lightboxImage"),
@@ -91,6 +86,21 @@ function renderBranding() {
   document.title = `${brandName} | Parcelas premium en el sur de Chile`;
 }
 
+function renderNavigation() {
+  const links = [
+    { href: "#hero", label: "Inicio" },
+    ...projectData.map((project) => ({ href: `#${project.id}`, label: project.name })),
+    { href: "#contacto", label: "Contacto" }
+  ];
+
+  const markup = links
+    .map((link) => `<a href="${link.href}">${link.label}</a>`)
+    .join("");
+
+  if (refs.mainNav) refs.mainNav.innerHTML = markup;
+  if (refs.footerNav) refs.footerNav.innerHTML = markup;
+}
+
 function renderHeroProjects() {
   if (!refs.heroProjects) return;
 
@@ -101,108 +111,23 @@ function renderHeroProjects() {
           ${createLogoMarkup(project)}
           <strong>${project.name}</strong>
           <span>${project.location}</span>
-          <p class="hero-project-line">${project.heroLine || project.badge || "Ultimas unidades disponibles"}</p>
-          <button class="btn btn-primary hero-card-btn" type="button" data-project-id="${project.id}" data-target="proyectos">
-            Visitar proyecto
-          </button>
+          <p class="hero-project-line">${project.tagline || "Ultimas unidades disponibles"}</p>
+          <a class="btn btn-primary hero-card-btn" href="#${project.id}">Visitar proyecto</a>
         </article>
       `
     )
     .join("");
 }
 
-function renderProjectCards() {
-  if (!refs.projectCards) return;
-
-  refs.projectCards.innerHTML = projectData
-    .map(
-      (project) => `
-        <article class="project-card reveal">
-          <div class="project-top">
-            ${createLogoMarkup(project)}
-            <div class="project-logo-copy">
-              <strong>${project.name}</strong>
-              <span>${project.location}</span>
-            </div>
-          </div>
-          <span class="project-badge">${project.badge || "Ultimas unidades disponibles"}</span>
-          <p>${project.description}</p>
-          <div class="project-actions">
-            <button class="btn btn-secondary" type="button" data-project-id="${project.id}" data-target="galerias">Ver galeria</button>
-            <button class="btn btn-primary" type="button" data-project-id="${project.id}" data-target="unidades">Ver unidades</button>
-          </div>
-        </article>
-      `
-    )
-    .join("");
-}
-
-function renderTabs(container, activeId, target) {
-  if (!container) return;
-
-  container.innerHTML = projectData
-    .map(
-      (project) => `
-        <button
-          class="tab${project.id === activeId ? " is-active" : ""}"
-          type="button"
-          role="tab"
-          aria-selected="${project.id === activeId}"
-          data-project-id="${project.id}"
-          data-target="${target}"
-        >
-          ${project.name}
-        </button>
-      `
-    )
-    .join("");
-}
-
-function renderGalleryPanel() {
-  if (!refs.galleryPanel) return;
-
-  const project = getProject(state.galleryProjectId);
-
-  refs.galleryPanel.innerHTML = `
-    <div class="gallery-copy">
-      <div>
-        <span class="eyebrow">${project.badge || "Ultimas unidades disponibles"}</span>
-        <h3>${project.name}</h3>
-        <span>${project.location}</span>
-      </div>
-      <p>${project.description}</p>
-    </div>
-    <div class="gallery-grid">
-      ${project.gallery
-        .map(
-          (image, index) => `
-            <button
-              class="gallery-item"
-              type="button"
-              data-lightbox-project="${project.id}"
-              data-lightbox-index="${index}"
-            >
-              <img src="${image}" alt="${project.name} imagen ${index + 1}" loading="lazy" />
-              <span class="gallery-item-label">
-                <strong>${project.name}</strong>
-                <span>Vista ${index + 1}</span>
-              </span>
-            </button>
-          `
-        )
-        .join("")}
-    </div>
-  `;
-}
-
-function renderUnitsPanel() {
-  if (!refs.unitsPanel) return;
-
-  const project = getProject(state.unitsProjectId);
+function renderUnits(project) {
   const whatsappHref = appConfig.contact?.whatsappHref || "#contacto";
 
-  refs.unitsPanel.innerHTML = `
-    <div class="units-grid">
+  if (!project.units?.length) {
+    return '<p class="empty-state">Agrega unidades disponibles en el archivo de datos para completar esta seccion.</p>';
+  }
+
+  return `
+    <div class="units-grid project-units-grid">
       ${project.units
         .map(
           (unit) => `
@@ -239,6 +164,98 @@ function renderUnitsPanel() {
         .join("")}
     </div>
   `;
+}
+
+function renderGallery(project) {
+  if (!project.gallery?.length) {
+    return '<p class="empty-state">Agrega imagenes al arreglo `gallery` para mostrar la galeria de este proyecto.</p>';
+  }
+
+  return `
+    <div class="gallery-grid">
+      ${project.gallery
+        .map(
+          (image, index) => `
+            <button
+              class="gallery-item"
+              type="button"
+              data-lightbox-project="${project.id}"
+              data-lightbox-index="${index}"
+            >
+              <img src="${image}" alt="${project.name} imagen ${index + 1}" loading="lazy" />
+              <span class="gallery-item-label">
+                <strong>${project.name}</strong>
+                <span>Vista ${index + 1}</span>
+              </span>
+            </button>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderProjectSections() {
+  if (!refs.projectSections) return;
+
+  const whatsappHref = appConfig.contact?.whatsappHref || "#contacto";
+
+  refs.projectSections.innerHTML = projectData
+    .map(
+      (project, index) => `
+        <section class="section project-section${index % 2 === 0 ? " section-dark" : ""}" id="${project.id}">
+          <div class="container project-section-shell">
+            <div class="project-section-head reveal">
+              <div class="project-section-brand">
+                ${createLogoMarkup(project, "project-section-logo")}
+                <div class="project-section-copy">
+                  <p class="eyebrow">Proyecto destacado</p>
+                  <h2>${project.name}</h2>
+                  <span class="project-section-location">${project.location}</span>
+                  <p class="project-section-tagline">${project.tagline || "Ultimas unidades disponibles"}</p>
+                </div>
+              </div>
+              <p class="project-section-description">${project.description}</p>
+            </div>
+
+            <article class="project-block reveal">
+              <div class="project-block-head">
+                <div>
+                  <p class="eyebrow">Galeria</p>
+                  <h3>Conoce ${project.name}</h3>
+                </div>
+                <p>Imagenes editables cargadas desde el arreglo del proyecto.</p>
+              </div>
+              ${renderGallery(project)}
+            </article>
+
+            <article class="project-block reveal">
+              <div class="project-block-head">
+                <div>
+                  <p class="eyebrow">Disponibilidad</p>
+                  <h3>Ultimas unidades</h3>
+                </div>
+                <p>Actualiza lotes, precios, superficies y atributos directamente desde los datos del proyecto.</p>
+              </div>
+              ${renderUnits(project)}
+            </article>
+
+            <article class="project-cta reveal">
+              <div>
+                <p class="eyebrow">CTA del proyecto</p>
+                <h3>Agenda una visita y recibe informacion personalizada de ${project.name}.</h3>
+              </div>
+              <div class="project-cta-actions">
+                <a class="btn btn-primary" href="#contacto">Agendar visita</a>
+                <a class="btn btn-secondary" href="#contacto">Solicitar informacion</a>
+                <a class="btn btn-secondary" href="${whatsappHref}" target="_blank" rel="noreferrer">Hablar por WhatsApp</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      `
+    )
+    .join("");
 }
 
 function renderContact() {
@@ -279,40 +296,9 @@ function renderContact() {
   }
 }
 
-function handleProjectSelection(projectId, target, shouldScroll = true) {
-  const section = document.getElementById(target);
-
-  if (target === "proyectos") {
-    state.galleryProjectId = projectId;
-    state.unitsProjectId = projectId;
-    renderTabs(refs.galleryTabs, state.galleryProjectId, "galerias");
-    renderGalleryPanel();
-    renderTabs(refs.unitTabs, state.unitsProjectId, "unidades");
-    renderUnitsPanel();
-  }
-
-  if (target === "galerias") {
-    state.galleryProjectId = projectId;
-    renderTabs(refs.galleryTabs, state.galleryProjectId, "galerias");
-    renderGalleryPanel();
-  }
-
-  if (target === "unidades") {
-    state.unitsProjectId = projectId;
-    renderTabs(refs.unitTabs, state.unitsProjectId, "unidades");
-    renderUnitsPanel();
-  }
-
-  refreshRevealObserver();
-
-  if (shouldScroll && section) {
-    section.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-}
-
 function updateLightbox() {
   const project = getProject(state.lightboxProjectId);
-  const image = project.gallery[state.lightboxIndex];
+  const image = project?.gallery?.[state.lightboxIndex];
 
   if (!image || !refs.lightboxImage || !refs.lightboxCaption) return;
 
@@ -321,7 +307,9 @@ function updateLightbox() {
   refs.lightboxCaption.textContent = `${project.name} · ${project.location} · Vista ${state.lightboxIndex + 1}`;
 }
 
-function openLightbox() {
+function openLightbox(projectId, index) {
+  state.lightboxProjectId = projectId;
+  state.lightboxIndex = index;
   updateLightbox();
   refs.lightbox?.classList.add("is-open");
   refs.lightbox?.setAttribute("aria-hidden", "false");
@@ -336,7 +324,9 @@ function closeLightbox() {
 
 function nextLightbox(step) {
   const project = getProject(state.lightboxProjectId);
-  const max = project.gallery.length;
+  const max = project?.gallery?.length || 0;
+
+  if (!max) return;
 
   state.lightboxIndex = (state.lightboxIndex + step + max) % max;
   updateLightbox();
@@ -350,39 +340,40 @@ function bindNavigation() {
       document.body.classList.toggle("menu-open", isOpen);
     });
 
-    refs.mainNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        refs.mainNav.classList.remove("is-open");
-        refs.menuToggle.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("menu-open");
-      });
+    document.addEventListener("click", (event) => {
+      if (!refs.mainNav.classList.contains("is-open")) return;
+      if (refs.mainNav.contains(event.target) || refs.menuToggle.contains(event.target)) return;
+
+      refs.mainNav.classList.remove("is-open");
+      refs.menuToggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
     });
   }
+
+  document.querySelectorAll(".main-nav a, .footer-nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      refs.mainNav?.classList.remove("is-open");
+      refs.menuToggle?.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+    });
+  });
 
   window.addEventListener("scroll", () => {
     if (!refs.header) return;
     refs.header.classList.toggle("scrolled", window.scrollY > 20);
   });
+}
 
+function bindGalleryEvents() {
   document.addEventListener("click", (event) => {
-    const projectButton = event.target.closest("[data-project-id]");
-
-    if (projectButton) {
-      handleProjectSelection(
-        projectButton.getAttribute("data-project-id"),
-        projectButton.getAttribute("data-target"),
-        true
-      );
-      return;
-    }
-
     const lightboxButton = event.target.closest("[data-lightbox-project]");
 
-    if (lightboxButton) {
-      state.lightboxProjectId = lightboxButton.getAttribute("data-lightbox-project");
-      state.lightboxIndex = Number(lightboxButton.getAttribute("data-lightbox-index")) || 0;
-      openLightbox();
-    }
+    if (!lightboxButton) return;
+
+    openLightbox(
+      lightboxButton.getAttribute("data-lightbox-project"),
+      Number(lightboxButton.getAttribute("data-lightbox-index")) || 0
+    );
   });
 }
 
@@ -425,7 +416,7 @@ function refreshRevealObserver() {
         }
       });
     },
-    { threshold: 0.18 }
+    { threshold: 0.12 }
   );
 
   document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
@@ -453,15 +444,13 @@ function bindLightboxControls() {
 
 function init() {
   renderBranding();
+  renderNavigation();
   renderHeroProjects();
-  renderProjectCards();
-  renderTabs(refs.galleryTabs, state.galleryProjectId, "galerias");
-  renderGalleryPanel();
-  renderTabs(refs.unitTabs, state.unitsProjectId, "unidades");
-  renderUnitsPanel();
+  renderProjectSections();
   renderContact();
 
   bindNavigation();
+  bindGalleryEvents();
   bindContactForm();
   bindLightboxControls();
   refreshRevealObserver();

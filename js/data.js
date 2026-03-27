@@ -24,11 +24,11 @@ const siteConfig = {
 
 const projects = [
   {
-    id: "proyecto-01",
+    id: "proyecto-1",
     name: "Proyecto 01",
     location: "Ubicacion editable",
     logo: "",
-    heroLine: "Ultimas unidades disponibles",
+    tagline: "Ultimas unidades disponibles",
     description:
       "Descripcion breve editable para presentar atributos del proyecto, conectividad, entorno y propuesta de valor.",
     badge: "Ultimas unidades disponibles",
@@ -56,11 +56,11 @@ const projects = [
     ]
   },
   {
-    id: "proyecto-02",
+    id: "proyecto-2",
     name: "Proyecto 02",
     location: "Ubicacion editable",
     logo: "",
-    heroLine: "Parcelas listas para presentar",
+    tagline: "Parcelas listas para presentar",
     description:
       "Texto editable para resumir paisaje, plusvalia, acceso y estilo de vida asociado al proyecto.",
     badge: "Ultimas unidades disponibles",
@@ -88,11 +88,11 @@ const projects = [
     ]
   },
   {
-    id: "proyecto-03",
+    id: "proyecto-3",
     name: "Proyecto 03",
     location: "Ubicacion editable",
     logo: "",
-    heroLine: "Oportunidad de inversion editable",
+    tagline: "Oportunidad de inversion editable",
     description:
       "Contenido editable para destacar atributos del proyecto, cercania a servicios y nivel comercial.",
     badge: "Ultimas unidades disponibles",
