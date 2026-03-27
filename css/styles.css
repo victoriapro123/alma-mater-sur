@@ -194,8 +194,8 @@ button {
   align-items: center;
   gap: 14px;
   padding: 18px 20px;
-  background: rgba(79, 111, 82, 0.78);
-  border: 1px solid rgba(173, 209, 178, 0.18);
+  background: rgba(51, 72, 54, 0.94);
+  border: 1px solid rgba(173, 209, 178, 0.12);
 }
 
 .brand-mark {
