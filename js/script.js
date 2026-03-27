@@ -35,6 +35,20 @@
     return `<div class="logo-placeholder${safeClass}" aria-label="Logo placeholder ${project.name}">${getInitials(project.name)}</div>`;
   }
 
+  function createHeroVisualMarkup(project) {
+    const heroImage = project.coverImage || project.gallery?.[0];
+
+    if (heroImage) {
+      return `
+        <figure class="hero-project-visual">
+          <img class="hero-project-photo" src="${heroImage}" alt="${project.name}" loading="lazy" />
+        </figure>
+      `;
+    }
+
+    return createLogoMarkup(project);
+  }
+
   function iconSvg(type) {
     const icons = {
       phone:
@@ -91,11 +105,11 @@
       .map(
         (project) => `
           <article class="hero-project-card">
-            ${createLogoMarkup(project)}
+            ${createHeroVisualMarkup(project)}
             <strong>${project.name}</strong>
             <span>${project.location}</span>
             <p class="hero-project-line">${project.tagline || "Ultimas unidades disponibles"}</p>
-            <a class="btn btn-primary hero-card-btn" href="${project.pagePath || `${project.id}.html`}">Visitar proyecto</a>
+            <a class="hero-card-btn" href="${project.pagePath || `${project.id}.html`}">Visitar proyecto</a>
           </article>
         `
       )

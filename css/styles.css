@@ -339,6 +339,22 @@ button {
   transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
+.hero-project-visual {
+  width: 100%;
+  height: 208px;
+  margin: 0 0 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(10, 18, 12, 0.1);
+}
+
+.hero-project-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.01);
+}
+
 .hero-project-card:hover,
 .hero-project-card:focus-within {
   transform: translateY(-2px);
@@ -347,7 +363,7 @@ button {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
-.hero-project-card img,
+.hero-project-card > img,
 .logo-placeholder {
   width: auto;
   height: 80px;
@@ -394,8 +410,31 @@ button {
 }
 
 .hero-card-btn {
-  width: 100%;
   margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  color: var(--accent);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(207, 232, 208, 0.32);
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.hero-card-btn::after {
+  content: "+";
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.hero-card-btn:hover,
+.hero-card-btn:focus-visible {
+  color: #ecf2eb;
+  border-color: rgba(236, 242, 235, 0.68);
+  transform: translateX(2px);
 }
 
 .project-section {

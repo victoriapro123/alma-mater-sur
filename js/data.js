@@ -29,6 +29,8 @@ const projects = [
     name: "Proyecto 01",
     location: "Ubicacion editable",
     logo: "",
+    coverImage:
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
     tagline: "Ultimas unidades disponibles",
     description:
       "Descripcion breve editable para presentar atributos del proyecto, conectividad, entorno y propuesta de valor.",
@@ -62,6 +64,8 @@ const projects = [
     name: "Proyecto 02",
     location: "Ubicacion editable",
     logo: "",
+    coverImage:
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
     tagline: "Parcelas listas para presentar",
     description:
       "Texto editable para resumir paisaje, plusvalia, acceso y estilo de vida asociado al proyecto.",
@@ -95,6 +99,8 @@ const projects = [
     name: "Proyecto 03",
     location: "Ubicacion editable",
     logo: "",
+    coverImage:
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
     tagline: "Oportunidad de inversion editable",
     description:
       "Contenido editable para destacar atributos del proyecto, cercania a servicios y nivel comercial.",
