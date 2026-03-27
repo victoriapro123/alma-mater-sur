@@ -9,8 +9,6 @@ const siteConfig = {
   heroUrgency: "Ultimas unidades disponibles - agenda tu visita hoy.",
   heroImage:
     "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80",
-  heroVideoEmbed:
-    "https://www.youtube-nocookie.com/embed/alxCxVoEMu0?autoplay=1&mute=1&controls=0&loop=1&playlist=alxCxVoEMu0&playsinline=1&rel=0&modestbranding=1",
   ogImage:
     "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
   website: "https://www.almamatersur.cl",

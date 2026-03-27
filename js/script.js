@@ -7,7 +7,6 @@
     heroTitle: document.getElementById("heroTitle"),
     heroIntro: document.getElementById("heroIntro"),
     heroUrgency: document.getElementById("heroUrgency"),
-    heroVideoFrame: document.getElementById("heroVideoFrame"),
     contactList: document.getElementById("contactList"),
     footerMeta: document.getElementById("footerMeta"),
     form: document.getElementById("contactForm"),
@@ -120,9 +119,6 @@
     if (refs.heroTitle) refs.heroTitle.textContent = appConfig.heroTitle || "Las ultimas oportunidades para invertir en parcelas premium";
     if (refs.heroIntro) refs.heroIntro.textContent = appConfig.heroText || "Invierte en tranquilidad, naturaleza y alta plusvalia en el sur de Chile.";
     if (refs.heroUrgency) refs.heroUrgency.textContent = appConfig.heroUrgency || "Ultimas unidades disponibles - agenda tu visita hoy.";
-    if (refs.heroVideoFrame && appConfig.heroVideoEmbed) {
-      refs.heroVideoFrame.src = appConfig.heroVideoEmbed;
-    }
 
     document.title = `${brandName} | Parcelas premium en el sur de Chile`;
 
