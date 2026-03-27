@@ -1,10 +1,10 @@
-const siteConfig = window.siteConfig || {};
-const projects = window.projects || [];
+const appConfig = window.siteConfig || {};
+const projectData = window.projects || [];
 
 const state = {
-  galleryProjectId: projects[0]?.id || "",
-  unitsProjectId: projects[0]?.id || "",
-  lightboxProjectId: projects[0]?.id || "",
+  galleryProjectId: projectData[0]?.id || "",
+  unitsProjectId: projectData[0]?.id || "",
+  lightboxProjectId: projectData[0]?.id || "",
   lightboxIndex: 0
 };
 
@@ -32,7 +32,7 @@ const refs = {
 };
 
 function getProject(projectId) {
-  return projects.find((project) => project.id === projectId) || projects[0];
+  return projectData.find((project) => project.id === projectId) || projectData[0];
 }
 
 function getInitials(value) {
@@ -73,10 +73,10 @@ function iconSvg(type) {
 }
 
 function renderBranding() {
-  document.documentElement.style.setProperty("--hero-image", `url("${siteConfig.heroImage || ""}")`);
+  document.documentElement.style.setProperty("--hero-image", `url("${appConfig.heroImage || ""}")`);
 
-  const brandName = siteConfig.brandName || "Alma Matter Sur";
-  const brandTagline = siteConfig.brandTagline || "Parcelas premium en el sur de Chile";
+  const brandName = appConfig.brandName || "Alma Matter Sur";
+  const brandTagline = appConfig.brandTagline || "Parcelas premium en el sur de Chile";
 
   const brandNameEl = document.getElementById("brandName");
   const brandTaglineEl = document.getElementById("brandTagline");
@@ -94,7 +94,7 @@ function renderBranding() {
 function renderHeroProjects() {
   if (!refs.heroProjects) return;
 
-  refs.heroProjects.innerHTML = projects
+  refs.heroProjects.innerHTML = projectData
     .map(
       (project) => `
         <article class="hero-project-card">
@@ -114,7 +114,7 @@ function renderHeroProjects() {
 function renderProjectCards() {
   if (!refs.projectCards) return;
 
-  refs.projectCards.innerHTML = projects
+  refs.projectCards.innerHTML = projectData
     .map(
       (project) => `
         <article class="project-card reveal">
@@ -140,7 +140,7 @@ function renderProjectCards() {
 function renderTabs(container, activeId, target) {
   if (!container) return;
 
-  container.innerHTML = projects
+  container.innerHTML = projectData
     .map(
       (project) => `
         <button
@@ -199,7 +199,7 @@ function renderUnitsPanel() {
   if (!refs.unitsPanel) return;
 
   const project = getProject(state.unitsProjectId);
-  const whatsappHref = siteConfig.contact?.whatsappHref || "#contacto";
+  const whatsappHref = appConfig.contact?.whatsappHref || "#contacto";
 
   refs.unitsPanel.innerHTML = `
     <div class="units-grid">
@@ -244,7 +244,7 @@ function renderUnitsPanel() {
 function renderContact() {
   if (!refs.contactList || !refs.footerMeta) return;
 
-  const contact = siteConfig.contact || {};
+  const contact = appConfig.contact || {};
   const items = [
     { type: "phone", label: "Telefono", value: contact.phoneLabel, href: contact.phoneHref },
     { type: "email", label: "Correo", value: contact.emailLabel, href: contact.emailHref },
@@ -267,11 +267,11 @@ function renderContact() {
     .join("");
 
   refs.footerMeta.innerHTML = `
-    <p>${siteConfig.contact?.phoneLabel || ""}</p>
-    <p>${siteConfig.contact?.emailLabel || ""}</p>
-    <p><a href="${siteConfig.contact?.websiteHref || "#"}" target="_blank" rel="noreferrer">${siteConfig.contact?.websiteLabel || ""}</a></p>
-    <p><a href="${siteConfig.contact?.instagramHref || "#"}" target="_blank" rel="noreferrer">${siteConfig.contact?.instagramLabel || ""}</a></p>
-    <p>${siteConfig.copyright || ""}</p>
+    <p>${appConfig.contact?.phoneLabel || ""}</p>
+    <p>${appConfig.contact?.emailLabel || ""}</p>
+    <p><a href="${appConfig.contact?.websiteHref || "#"}" target="_blank" rel="noreferrer">${appConfig.contact?.websiteLabel || ""}</a></p>
+    <p><a href="${appConfig.contact?.instagramHref || "#"}" target="_blank" rel="noreferrer">${appConfig.contact?.instagramLabel || ""}</a></p>
+    <p>${appConfig.copyright || ""}</p>
   `;
 
   if (refs.whatsAppFloat && contact.whatsappHref) {
