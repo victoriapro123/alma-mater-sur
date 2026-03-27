@@ -262,6 +262,12 @@ button {
   padding: 112px 0 40px;
 }
 
+.hero:not(.project-detail-hero) .hero-shell {
+  justify-content: flex-start;
+  gap: 18px;
+  padding: 84px 0 32px;
+}
+
 .hero-copy {
   width: min(100%, 1120px);
   margin: 0 auto;
@@ -465,17 +471,35 @@ button {
   display: flex;
   align-items: center;
   gap: 24px;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
+}
+
+.project-detail-copy {
+  max-width: 720px;
 }
 
 .project-detail-copy h1 {
   margin: 0;
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
-  font-size: clamp(3rem, 5vw, 5.1rem);
+  font-size: clamp(2.7rem, 4.5vw, 4.6rem);
   line-height: 1.04;
   letter-spacing: 0.018em;
   text-wrap: balance;
+}
+
+.project-detail-copy .project-section-location {
+  margin-top: 12px;
+  font-size: 1.02rem;
+}
+
+.project-detail-copy .project-section-tagline {
+  margin-top: 18px;
+  font-size: 1.04rem;
+}
+
+.project-detail-card .project-section-description {
+  max-width: 760px;
 }
 
 .project-detail-actions {
