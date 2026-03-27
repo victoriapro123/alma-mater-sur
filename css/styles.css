@@ -232,7 +232,8 @@ button {
 }
 
 .hero-media,
-.hero-overlay {
+.hero-overlay,
+.hero-video {
   position: absolute;
   inset: 0;
 }
@@ -248,6 +249,24 @@ button {
   background:
     linear-gradient(180deg, rgba(6, 10, 7, 0.08) 0%, rgba(6, 10, 7, 0.24) 100%),
     radial-gradient(circle at 20% 20%, rgba(143, 179, 146, 0.14), transparent 38%);
+}
+
+.hero-video {
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw;
+  min-width: 177.78vh;
+  min-height: 100vh;
+  transform: translate(-50%, -50%);
+  border: 0;
+  opacity: 0.92;
 }
 
 .hero:not(.project-detail-hero) .hero-overlay {
