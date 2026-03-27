@@ -427,6 +427,8 @@ button {
   margin-top: auto;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  align-self: center;
   gap: 10px;
   padding: 0;
   color: var(--accent);
