@@ -25,6 +25,7 @@ const siteConfig = {
 const projects = [
   {
     id: "proyecto-1",
+    pagePath: "proyecto-1.html",
     name: "Proyecto 01",
     location: "Ubicacion editable",
     logo: "",
@@ -57,6 +58,7 @@ const projects = [
   },
   {
     id: "proyecto-2",
+    pagePath: "proyecto-2.html",
     name: "Proyecto 02",
     location: "Ubicacion editable",
     logo: "",
@@ -89,6 +91,7 @@ const projects = [
   },
   {
     id: "proyecto-3",
+    pagePath: "proyecto-3.html",
     name: "Proyecto 03",
     location: "Ubicacion editable",
     logo: "",

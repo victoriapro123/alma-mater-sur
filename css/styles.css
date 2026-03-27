@@ -402,6 +402,46 @@ button {
     linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(13, 13, 13, 0.88));
 }
 
+.project-detail-hero .hero-shell {
+  min-height: calc(88svh - 82px);
+}
+
+.project-detail-shell {
+  align-items: stretch;
+}
+
+.project-detail-card {
+  width: min(100%, 1080px);
+  padding: 34px;
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(16px);
+}
+
+.project-detail-brand {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.project-detail-copy h1 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: clamp(3rem, 5vw, 5.1rem);
+  line-height: 0.92;
+}
+
+.project-detail-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
 .project-section-shell {
   display: grid;
   gap: 28px;
@@ -991,6 +1031,8 @@ button {
 
 #hero,
 #contacto,
+[id="galeria"],
+[id="unidades"],
 [id^="proyecto-"] {
   scroll-margin-top: 110px;
 }
@@ -1063,6 +1105,7 @@ button {
   }
 
   .project-section-brand,
+  .project-detail-brand,
   .project-block-head,
   .project-cta {
     flex-direction: column;
@@ -1145,6 +1188,7 @@ button {
 
   .hero-actions,
   .cta-strip-actions,
+  .project-detail-actions,
   .project-actions,
   .unit-actions,
   .project-cta-actions {
