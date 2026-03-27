@@ -2,12 +2,12 @@
 // Si agregas logos reales, usa rutas locales como "/logos/proyecto-1.png" o URLs completas.
 
 const siteConfig = {
-  brandName: "Alma Matter Sur",
+  brandName: "Alma Mater Sur",
   brandTagline: "Parcelas premium en el sur de Chile",
   heroImage:
     "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80",
   website: "https://www.almamatersur.cl",
-  copyright: "2026 Alma Matter Sur. Todos los derechos reservados.",
+  copyright: "2026 Alma Mater Sur. Todos los derechos reservados.",
   contact: {
     phoneLabel: "+56 9 XXXX XXXX",
     phoneHref: "tel:+56900000000",

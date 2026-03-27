@@ -82,7 +82,7 @@
     const heroImage = project.gallery?.[0] || appConfig.heroImage || "";
     document.documentElement.style.setProperty("--hero-image", `url("${heroImage}")`);
 
-    const brandName = appConfig.brandName || "Alma Matter Sur";
+    const brandName = appConfig.brandName || "Alma Mater Sur";
     const brandTagline = appConfig.brandTagline || "Parcelas premium en el sur de Chile";
 
     const brandNameEl = document.getElementById("brandName");
