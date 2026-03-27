@@ -251,23 +251,33 @@ button {
 .hero-shell {
   position: relative;
   z-index: 1;
-  padding: 132px 0 72px;
+  min-height: calc(100svh - 82px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  padding: 112px 0 40px;
 }
 
 .hero-copy {
-  max-width: 760px;
-  margin-bottom: 28px;
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero-copy h1 {
-  font-size: clamp(3.5rem, 7vw, 6.2rem);
-  line-height: 0.92;
-  margin-bottom: 18px;
+  max-width: 1120px;
+  margin: 0 auto 16px;
+  font-size: clamp(2.9rem, 5.3vw, 5rem);
+  line-height: 0.94;
+  text-wrap: balance;
 }
 
 .hero-text {
-  max-width: 640px;
-  font-size: 1.05rem;
+  max-width: 860px;
+  margin: 0 auto;
+  font-size: 1rem;
 }
 
 .hero-panel,
@@ -284,6 +294,7 @@ button {
 }
 
 .hero-panel {
+  width: min(100%, 1180px);
   padding: clamp(24px, 4vw, 38px);
   border-radius: var(--radius-lg);
 }
@@ -293,15 +304,15 @@ button {
   justify-content: center;
   align-items: stretch;
   gap: clamp(18px, 2vw, 28px);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .hero-project-card {
-  flex: 1 1 280px;
-  min-width: 240px;
-  max-width: 340px;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: none;
   text-align: center;
-  padding: 30px;
+  padding: 26px 22px;
   border-radius: 12px;
   background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(6px);
@@ -344,7 +355,7 @@ button {
 .unit-card h3 {
   display: block;
   font-family: "Cormorant Garamond", serif;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: 600;
   line-height: 1;
 }
@@ -889,6 +900,7 @@ button {
   }
 
   .hero-shell {
+    min-height: auto;
     padding-top: 118px;
   }
 
@@ -915,6 +927,7 @@ button {
 
   .hero-projects {
     flex-direction: column;
+    flex-wrap: wrap;
   }
 
   .hero-project-card {
