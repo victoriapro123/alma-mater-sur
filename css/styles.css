@@ -473,7 +473,9 @@ button {
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
   font-size: clamp(3rem, 5vw, 5.1rem);
-  line-height: 0.92;
+  line-height: 1.04;
+  letter-spacing: 0.018em;
+  text-wrap: balance;
 }
 
 .project-detail-actions {
