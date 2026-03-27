@@ -240,6 +240,38 @@
     `;
   }
 
+  function renderVideo() {
+    if (!project.video?.embedUrl) return "";
+
+    return `
+      <section class="section project-section section-dark" id="video">
+        <div class="container project-section-shell">
+          <article class="project-block reveal">
+            <div class="project-block-head">
+              <div>
+                <p class="eyebrow">Video</p>
+                <h3>${project.video.title || "Recorrido del proyecto"}</h3>
+              </div>
+              <p>Una vista general del proyecto para complementar la galeria y la informacion comercial.</p>
+            </div>
+            <div class="video-embed-shell">
+              <div class="video-embed-frame">
+                <iframe
+                  src="${project.video.embedUrl}"
+                  title="${project.video.title || `Video de ${project.name}`}"
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    `;
+  }
+
   function renderProjectPage() {
     if (!refs.projectPage || !project) return;
 
@@ -285,6 +317,8 @@
           </article>
         </div>
       </section>
+
+      ${renderVideo()}
 
       <section class="section project-section" id="unidades">
         <div class="container project-section-shell">
