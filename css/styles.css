@@ -233,7 +233,8 @@ button {
 
 .site-header + .hero {
   margin-top: -82px;
-  min-height: calc(100svh + 82px);
+  min-height: 100svh;
+  height: 100svh;
 }
 
 .hero-media,
@@ -265,19 +266,19 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 122vw;
-  height: 68.625vw;
-  min-width: 216.89vh;
-  min-height: 122vh;
+  width: 132vw;
+  height: 74.25vw;
+  min-width: 235vh;
+  min-height: 132vh;
   transform: translate(-50%, -50%);
   border: 0;
-  opacity: 0.92;
+  opacity: 1;
 }
 
 .hero:not(.project-detail-hero) .hero-overlay {
   background:
-    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-    radial-gradient(circle at 20% 20%, rgba(143, 179, 146, 0.1), transparent 38%);
+    linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32)),
+    radial-gradient(circle at 20% 20%, rgba(143, 179, 146, 0.04), transparent 38%);
 }
 
 .hero-shell {
