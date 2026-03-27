@@ -1288,40 +1288,94 @@ body.home-video-page .hero-overlay {
 }
 
 @media (max-width: 800px) {
+  .nav-shell {
+    min-height: 72px;
+  }
+
   .menu-toggle {
     display: inline-flex;
+    position: relative;
+    z-index: 72;
   }
 
   .main-nav {
     position: fixed;
-    top: 82px;
-    left: 16px;
-    right: 16px;
+    top: 72px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: none;
     flex-direction: column;
     align-items: stretch;
-    padding: 14px;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 20px;
     border-radius: 0;
-    background: rgba(10, 18, 12, 0.26);
-    border: 1px solid rgba(173, 209, 178, 0.1);
+    background: rgba(8, 16, 11, 0.94);
+    border-top: 1px solid rgba(173, 209, 178, 0.14);
     box-shadow: var(--shadow-lg);
+    z-index: 71;
+    overflow-y: auto;
   }
 
   .main-nav.is-open {
     display: flex;
   }
 
+  .main-nav a {
+    padding: 14px 0;
+    font-size: 1.08rem;
+    color: var(--text);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
   .hero-shell {
     min-height: auto;
-    padding-top: 118px;
+    padding-top: 92px;
+    gap: 12px;
   }
 
   .hero-copy-compact {
-    max-width: 620px;
+    max-width: 360px;
   }
 
   .hero-copy h1 {
-    font-size: clamp(2.7rem, 12vw, 4.3rem);
+    font-size: clamp(2.2rem, 10vw, 3rem);
+    line-height: 0.98;
+  }
+
+  .hero-intro {
+    font-size: 0.94rem;
+  }
+
+  .hero-urgency {
+    margin-top: 10px;
+    font-size: 0.7rem;
+  }
+
+  .hero-project-card {
+    padding-bottom: 14px;
+  }
+
+  .hero-project-visual {
+    min-height: 180px;
+  }
+
+  .hero-project-card strong {
+    font-size: 1.3rem;
+  }
+
+  .hero-project-facts {
+    font-size: 0.72rem;
+  }
+
+  .hero-project-line {
+    font-size: 0.78rem;
+    margin-bottom: 12px;
+  }
+
+  .hero-actions {
+    margin-top: 12px;
   }
 
   .project-section-brand,

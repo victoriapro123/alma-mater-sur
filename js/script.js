@@ -219,9 +219,17 @@
 
   function bindNavigation() {
     if (refs.menuToggle && refs.mainNav) {
+      const closeMenu = () => {
+        refs.mainNav.classList.remove("is-open");
+        refs.menuToggle.setAttribute("aria-expanded", "false");
+        refs.menuToggle.setAttribute("aria-label", "Abrir menu");
+        document.body.classList.remove("menu-open");
+      };
+
       refs.menuToggle.addEventListener("click", () => {
         const isOpen = refs.mainNav.classList.toggle("is-open");
         refs.menuToggle.setAttribute("aria-expanded", String(isOpen));
+        refs.menuToggle.setAttribute("aria-label", isOpen ? "Cerrar menu" : "Abrir menu");
         document.body.classList.toggle("menu-open", isOpen);
       });
 
@@ -229,9 +237,11 @@
         if (!refs.mainNav.classList.contains("is-open")) return;
         if (refs.mainNav.contains(event.target) || refs.menuToggle.contains(event.target)) return;
 
-        refs.mainNav.classList.remove("is-open");
-        refs.menuToggle.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("menu-open");
+        closeMenu();
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 800) closeMenu();
       });
     }
 
@@ -239,6 +249,7 @@
       link.addEventListener("click", () => {
         refs.mainNav?.classList.remove("is-open");
         refs.menuToggle?.setAttribute("aria-expanded", "false");
+        refs.menuToggle?.setAttribute("aria-label", "Abrir menu");
         document.body.classList.remove("menu-open");
       });
     });
