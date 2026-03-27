@@ -39,10 +39,6 @@ const projects = [
     tagline: "Ultimas unidades disponibles",
     description:
       "Descripcion breve editable para presentar atributos del proyecto, conectividad, entorno y propuesta de valor.",
-    video: {
-      title: "Conoce el proyecto en video",
-      embedUrl: "https://www.youtube-nocookie.com/embed/alxCxVoEMu0?rel=0"
-    },
     quickFacts: [
       { type: "distance", text: "A 25 min de ciudad editable" },
       { type: "area", text: "Parcelas desde 5.000 m2" },
