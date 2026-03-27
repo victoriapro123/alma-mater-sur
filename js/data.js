@@ -28,6 +28,7 @@ const projects = [
     name: "Proyecto 01",
     location: "Ubicacion editable",
     logo: "",
+    heroLine: "Ultimas unidades disponibles",
     description:
       "Descripcion breve editable para presentar atributos del proyecto, conectividad, entorno y propuesta de valor.",
     badge: "Ultimas unidades disponibles",
@@ -59,6 +60,7 @@ const projects = [
     name: "Proyecto 02",
     location: "Ubicacion editable",
     logo: "",
+    heroLine: "Parcelas listas para presentar",
     description:
       "Texto editable para resumir paisaje, plusvalia, acceso y estilo de vida asociado al proyecto.",
     badge: "Ultimas unidades disponibles",
@@ -90,6 +92,7 @@ const projects = [
     name: "Proyecto 03",
     location: "Ubicacion editable",
     logo: "",
+    heroLine: "Oportunidad de inversion editable",
     description:
       "Contenido editable para destacar atributos del proyecto, cercania a servicios y nivel comercial.",
     badge: "Ultimas unidades disponibles",

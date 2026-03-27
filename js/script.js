@@ -97,11 +97,15 @@ function renderHeroProjects() {
   refs.heroProjects.innerHTML = projects
     .map(
       (project) => `
-        <button class="hero-project-card" type="button" data-project-id="${project.id}" data-target="galerias">
+        <article class="hero-project-card">
           ${createLogoMarkup(project)}
           <strong>${project.name}</strong>
           <span>${project.location}</span>
-        </button>
+          <p class="hero-project-line">${project.heroLine || project.badge || "Ultimas unidades disponibles"}</p>
+          <button class="btn btn-primary hero-card-btn" type="button" data-project-id="${project.id}" data-target="proyectos">
+            Visitar proyecto
+          </button>
+        </article>
       `
     )
     .join("");
@@ -277,6 +281,15 @@ function renderContact() {
 
 function handleProjectSelection(projectId, target, shouldScroll = true) {
   const section = document.getElementById(target);
+
+  if (target === "proyectos") {
+    state.galleryProjectId = projectId;
+    state.unitsProjectId = projectId;
+    renderTabs(refs.galleryTabs, state.galleryProjectId, "galerias");
+    renderGalleryPanel();
+    renderTabs(refs.unitTabs, state.unitsProjectId, "unidades");
+    renderUnitsPanel();
+  }
 
   if (target === "galerias") {
     state.galleryProjectId = projectId;
