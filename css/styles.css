@@ -277,8 +277,8 @@ button {
 
 .hero:not(.project-detail-hero) .hero-overlay {
   background:
-    linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32)),
-    radial-gradient(circle at 20% 20%, rgba(143, 179, 146, 0.04), transparent 38%);
+    linear-gradient(rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)),
+    radial-gradient(circle at 20% 20%, rgba(143, 179, 146, 0.06), transparent 38%);
 }
 
 .hero-shell {
@@ -295,12 +295,18 @@ button {
 
 .site-header + .hero .hero-shell {
   min-height: 100svh;
+  padding-top: 154px;
+  padding-bottom: 42px;
 }
 
 .hero:not(.project-detail-hero) .hero-shell {
-  justify-content: flex-start;
-  gap: 18px;
-  padding: 84px 0 32px;
+  justify-content: center;
+  gap: 26px;
+}
+
+.hero:not(.project-detail-hero) .hero-copy {
+  max-width: 960px;
+  margin-top: 0;
 }
 
 .hero-copy {
@@ -328,12 +334,25 @@ button {
   text-wrap: balance;
 }
 
+.hero:not(.project-detail-hero) .hero-copy h1 {
+  max-width: 920px;
+  font-size: clamp(3rem, 5.3vw, 5rem);
+  line-height: 0.94;
+  text-shadow: 0 10px 26px rgba(0, 0, 0, 0.34);
+}
+
 .hero-urgency {
   margin: 18px 0 0;
   font-size: 0.88rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(207, 232, 208, 0.88);
+}
+
+.hero:not(.project-detail-hero) .hero-intro,
+.hero:not(.project-detail-hero) .hero-urgency,
+.hero:not(.project-detail-hero) .eyebrow {
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.32);
 }
 
 .hero-text {
