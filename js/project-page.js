@@ -8,6 +8,9 @@
     lightboxIndex: 0
   };
 
+  const placeholderImage =
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%230b130e'/%3E%3C/svg%3E";
+
   const refs = {
     projectPage: document.getElementById("projectPage"),
     contactList: document.getElementById("contactList"),
@@ -45,6 +48,42 @@
     }
 
     return `<div class="logo-placeholder${safeClass}" aria-label="Logo placeholder ${project.name}">${getInitials(project.name)}</div>`;
+  }
+
+  function factIcon(type) {
+    const icons = {
+      distance:
+        '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 4.9 7 13 7 13s7-8.1 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>',
+      area:
+        '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M3 3h8v2H5v6H3V3Zm10 0h8v8h-2V5h-6V3ZM3 13h2v6h6v2H3v-8Zm16 0h2v8h-8v-2h6v-6Z"/></svg>',
+      price:
+        '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M11 3h2v2.1c2.3.2 4 1.5 4 3.6h-2c0-1.1-.9-1.8-2.5-1.8-1.4 0-2.5.6-2.5 1.7 0 .9.7 1.4 3 1.9 2.9.6 4.7 1.6 4.7 4.2 0 2.2-1.8 3.7-4.7 4V21h-2v-2.1c-2.8-.2-4.8-1.8-4.9-4.3h2.1c.1 1.4 1.2 2.3 2.9 2.3 1.6 0 2.7-.7 2.7-1.9 0-1-.8-1.6-3.2-2.1-2.7-.6-4.4-1.6-4.4-4 0-2.1 1.7-3.6 4.3-3.8V3Z"/></svg>'
+    };
+
+    return icons[type] || icons.distance;
+  }
+
+  function createQuickFactsMarkup() {
+    if (!project.quickFacts?.length) return "";
+
+    return `
+      <ul class="hero-project-facts project-quick-facts" aria-label="Datos rapidos de ${project.name}">
+        ${project.quickFacts
+          .map(
+            (fact) => `
+              <li>
+                <span class="fact-icon">${factIcon(fact.type)}</span>
+                <span>${fact.text}</span>
+              </li>
+            `
+          )
+          .join("")}
+      </ul>
+    `;
+  }
+
+  function createDeferredImageMarkup(image, alt) {
+    return `<img class="deferred-media" src="${placeholderImage}" data-src="${image}" alt="${alt}" loading="lazy" decoding="async" />`;
   }
 
   function createProjectHeroMediaMarkup() {
@@ -98,8 +137,20 @@
     document.title = `${project.name} | ${brandName}`;
 
     const description = document.querySelector('meta[name="description"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    const ogImage = document.querySelector('meta[property="og:image"]');
     if (description) {
-      description.content = `${project.name}, ${project.location}. ${project.tagline || ""} ${project.description}`.trim();
+      description.content = `${project.name}. ${project.location}. ${project.tagline || ""} ${project.description}`.trim();
+    }
+    if (ogTitle) {
+      ogTitle.content = `${project.name} | ${brandName}`;
+    }
+    if (ogDescription) {
+      ogDescription.content = `${project.location}. ${project.tagline || ""} ${project.description}`.trim();
+    }
+    if (ogImage) {
+      ogImage.content = project.coverImage || project.gallery?.[0] || appConfig.ogImage || appConfig.heroImage || "";
     }
   }
 
@@ -151,7 +202,7 @@
                   ${unit.features.map((feature) => `<span class="chip">${feature}</span>`).join("")}
                 </div>
                 <div class="unit-actions">
-                  <a class="btn btn-primary" href="${whatsappHref}" target="_blank" rel="noreferrer">Contactar</a>
+                  <a class="btn btn-primary" href="${whatsappHref}" target="_blank" rel="noreferrer" data-track="click_whatsapp" data-track-label="unidad_contactar" data-project-id="${project.id}">Contactar</a>
                 </div>
               </article>
             `
@@ -176,7 +227,7 @@
                 type="button"
                 data-lightbox-index="${index}"
               >
-                <img src="${image}" alt="${project.name} imagen ${index + 1}" loading="lazy" />
+                ${createDeferredImageMarkup(image, `${project.name} imagen ${index + 1}`)}
                 <span class="gallery-item-label">
                   <strong>${project.name}</strong>
                   <span>Vista ${index + 1}</span>
@@ -207,13 +258,14 @@
                 <h1>${project.name}</h1>
                 <span class="project-section-location">${project.location}</span>
                 <p class="project-section-tagline">${project.tagline || "Ultimas unidades disponibles"}</p>
+                ${createQuickFactsMarkup()}
               </div>
             </div>
             <p class="project-section-description">${project.description}</p>
             <div class="project-detail-actions">
-              <a class="btn btn-primary" href="#galeria">Ver galeria</a>
-              <a class="btn btn-secondary" href="#unidades">Ver unidades</a>
-              <a class="btn btn-secondary" href="${whatsappHref}" target="_blank" rel="noreferrer">Hablar por WhatsApp</a>
+              <a class="btn btn-primary" href="#galeria" data-track="click_contacto" data-track-label="ver_galeria" data-project-id="${project.id}">Ver galeria</a>
+              <a class="btn btn-secondary" href="#unidades" data-track="click_contacto" data-track-label="ver_unidades" data-project-id="${project.id}">Ver unidades</a>
+              <a class="btn btn-secondary" href="${whatsappHref}" target="_blank" rel="noreferrer" data-track="click_whatsapp" data-track-label="hero_whatsapp" data-project-id="${project.id}">Hablar por WhatsApp</a>
             </div>
           </div>
         </div>
@@ -253,9 +305,9 @@
               <h3>Agenda una visita y solicita informacion completa de ${project.name}.</h3>
             </div>
             <div class="project-cta-actions">
-              <a class="btn btn-primary" href="#contacto">Agendar visita</a>
-              <a class="btn btn-secondary" href="#contacto">Solicitar informacion</a>
-              <a class="btn btn-secondary" href="${whatsappHref}" target="_blank" rel="noreferrer">Hablar por WhatsApp</a>
+              <a class="btn btn-primary" href="#contacto" data-track="click_contacto" data-track-label="agendar_visita" data-project-id="${project.id}">Agendar visita</a>
+              <a class="btn btn-secondary" href="#contacto" data-track="click_contacto" data-track-label="solicitar_informacion" data-project-id="${project.id}">Solicitar informacion</a>
+              <a class="btn btn-secondary" href="${whatsappHref}" target="_blank" rel="noreferrer" data-track="click_whatsapp" data-track-label="cta_whatsapp" data-project-id="${project.id}">Hablar por WhatsApp</a>
             </div>
           </article>
         </div>
@@ -288,6 +340,14 @@
       )
       .join("");
 
+    refs.contactList.querySelectorAll("a").forEach((link, index) => {
+      const item = items[index];
+      if (!item) return;
+      link.dataset.track = item.type === "whatsapp" ? "click_whatsapp" : "click_contacto";
+      link.dataset.trackLabel = item.type;
+      link.dataset.projectId = project.id;
+    });
+
     refs.footerMeta.innerHTML = `
       <p>${appConfig.contact?.phoneLabel || ""}</p>
       <p>${appConfig.contact?.emailLabel || ""}</p>
@@ -298,6 +358,7 @@
 
     if (refs.whatsAppFloat && contact.whatsappHref) {
       refs.whatsAppFloat.href = contact.whatsappHref;
+      refs.whatsAppFloat.dataset.projectId = project.id;
     }
   }
 
@@ -308,7 +369,7 @@
 
     refs.lightboxImage.src = image;
     refs.lightboxImage.alt = `${project.name} imagen ${state.lightboxIndex + 1}`;
-    refs.lightboxCaption.textContent = `${project.name} · ${project.location} · Vista ${state.lightboxIndex + 1}`;
+    refs.lightboxCaption.textContent = `${project.name} - ${project.location} - Vista ${state.lightboxIndex + 1}`;
   }
 
   function openLightbox(index) {
@@ -395,6 +456,58 @@
     });
   }
 
+  function initDeferredMedia() {
+    const mediaNodes = document.querySelectorAll("img[data-src]");
+
+    if (!mediaNodes.length) return;
+
+    const loadImage = (img) => {
+      if (!img.dataset.src) return;
+      img.src = img.dataset.src;
+      img.removeAttribute("data-src");
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      mediaNodes.forEach(loadImage);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          loadImage(entry.target);
+          currentObserver.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "220px 0px" }
+    );
+
+    mediaNodes.forEach((img) => observer.observe(img));
+  }
+
+  function trackEvent(eventName, params = {}) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: eventName, ...params });
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", eventName, params);
+    }
+  }
+
+  function bindConversionTracking() {
+    document.addEventListener("click", (event) => {
+      const target = event.target.closest("[data-track]");
+      if (!target) return;
+
+      trackEvent(target.dataset.track, {
+        label: target.dataset.trackLabel || "",
+        project_id: target.dataset.projectId || project.id || "",
+        href: target.getAttribute("href") || ""
+      });
+    });
+  }
+
   let revealObserver;
 
   function refreshRevealObserver() {
@@ -444,8 +557,10 @@
     renderNavigation();
     renderProjectPage();
     renderContact();
+    initDeferredMedia();
     bindNavigation();
     bindGalleryEvents();
+    bindConversionTracking();
     bindContactForm();
     bindLightboxControls();
     refreshRevealObserver();

@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alma Mater Sur | Parcelas premium en el sur de Chile</title>
+  <title>Alma Mater Sur | Parcelas premium en el sur de Chile</title>
   <meta
     name="description"
-      content="Landing page de Alma Mater Sur para vender las ultimas unidades disponibles de tres proyectos exclusivos de parcelas en el sur de Chile."
+    content="Venta de parcelas premium en el sur de Chile. Ultimas unidades disponibles. Agenda tu visita con Alma Mater Sur."
   />
   <meta name="theme-color" content="#111111" />
-    <meta property="og:title" content="Alma Mater Sur | Parcelas premium en el sur de Chile" />
+  <meta property="og:title" content="Alma Mater Sur | Parcelas premium en el sur de Chile" />
   <meta
     property="og:description"
-    content="Conoce tres proyectos exclusivos de parcelas, revisa galerias, unidades disponibles y agenda una visita."
+    content="Venta de parcelas premium en el sur de Chile. Ultimas unidades disponibles y atencion comercial directa."
   />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80" />
+  <meta property="og:locale" content="es_CL" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -47,7 +51,9 @@
     <div class="container hero-shell">
       <div class="hero-copy hero-copy-compact reveal">
         <p class="eyebrow">Ultimas unidades disponibles</p>
-        <p class="hero-intro">Selecciona un proyecto para conocer sus parcelas disponibles.</p>
+        <h1 id="heroTitle">Las ultimas oportunidades para invertir en parcelas premium</h1>
+        <p class="hero-intro" id="heroIntro">Invierte en tranquilidad, naturaleza y alta plusvalia en el sur de Chile.</p>
+        <p class="hero-urgency" id="heroUrgency">Ultimas unidades disponibles - agenda tu visita hoy.</p>
       </div>
 
       <div class="hero-panel reveal">
@@ -56,8 +62,8 @@
         </div>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contacto">Agenda tu visita</a>
-          <a class="btn btn-secondary" href="#contacto">Contactar ejecutivo</a>
+          <a class="btn btn-primary" href="#contacto" data-track="click_contacto" data-track-label="agenda_visita_home">Agenda tu visita</a>
+          <a class="btn btn-secondary" href="#contacto" data-track="click_contacto" data-track-label="contactar_ejecutivo_home">Contactar ejecutivo</a>
         </div>
       </div>
     </div>
@@ -131,7 +137,7 @@
     </div>
   </footer>
 
-  <a class="whatsapp-float" id="whatsAppFloat" href="#contacto" target="_blank" rel="noreferrer">
+  <a class="whatsapp-float" id="whatsAppFloat" href="#contacto" target="_blank" rel="noreferrer" data-track="click_whatsapp" data-track-label="whatsapp_float">
     <span>WhatsApp</span>
   </a>
 

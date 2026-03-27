@@ -4,6 +4,9 @@
 
   const refs = {
     heroProjects: document.getElementById("heroProjects"),
+    heroTitle: document.getElementById("heroTitle"),
+    heroIntro: document.getElementById("heroIntro"),
+    heroUrgency: document.getElementById("heroUrgency"),
     contactList: document.getElementById("contactList"),
     footerMeta: document.getElementById("footerMeta"),
     form: document.getElementById("contactForm"),
@@ -33,6 +36,38 @@
     }
 
     return `<div class="logo-placeholder${safeClass}" aria-label="Logo placeholder ${project.name}">${getInitials(project.name)}</div>`;
+  }
+
+  function factIcon(type) {
+    const icons = {
+      distance:
+        '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 4.9 7 13 7 13s7-8.1 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>',
+      area:
+        '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M3 3h8v2H5v6H3V3Zm10 0h8v8h-2V5h-6V3ZM3 13h2v6h6v2H3v-8Zm16 0h2v8h-8v-2h6v-6Z"/></svg>',
+      price:
+        '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M11 3h2v2.1c2.3.2 4 1.5 4 3.6h-2c0-1.1-.9-1.8-2.5-1.8-1.4 0-2.5.6-2.5 1.7 0 .9.7 1.4 3 1.9 2.9.6 4.7 1.6 4.7 4.2 0 2.2-1.8 3.7-4.7 4V21h-2v-2.1c-2.8-.2-4.8-1.8-4.9-4.3h2.1c.1 1.4 1.2 2.3 2.9 2.3 1.6 0 2.7-.7 2.7-1.9 0-1-.8-1.6-3.2-2.1-2.7-.6-4.4-1.6-4.4-4 0-2.1 1.7-3.6 4.3-3.8V3Z"/></svg>'
+    };
+
+    return icons[type] || icons.distance;
+  }
+
+  function createQuickFactsMarkup(project) {
+    if (!project.quickFacts?.length) return "";
+
+    return `
+      <ul class="hero-project-facts" aria-label="Datos rapidos de ${project.name}">
+        ${project.quickFacts
+          .map(
+            (fact) => `
+              <li>
+                <span class="fact-icon">${factIcon(fact.type)}</span>
+                <span>${fact.text}</span>
+              </li>
+            `
+          )
+          .join("")}
+      </ul>
+    `;
   }
 
   function createHeroVisualMarkup(project) {
@@ -81,8 +116,28 @@
     if (brandTaglineEl) brandTaglineEl.textContent = brandTagline;
     if (footerBrandNameEl) footerBrandNameEl.textContent = brandName;
     if (footerBrandTaglineEl) footerBrandTaglineEl.textContent = brandTagline;
+    if (refs.heroTitle) refs.heroTitle.textContent = appConfig.heroTitle || "Las ultimas oportunidades para invertir en parcelas premium";
+    if (refs.heroIntro) refs.heroIntro.textContent = appConfig.heroText || "Invierte en tranquilidad, naturaleza y alta plusvalia en el sur de Chile.";
+    if (refs.heroUrgency) refs.heroUrgency.textContent = appConfig.heroUrgency || "Ultimas unidades disponibles - agenda tu visita hoy.";
 
     document.title = `${brandName} | Parcelas premium en el sur de Chile`;
+
+    const description = document.querySelector('meta[name="description"]');
+    if (description) {
+      description.content =
+        "Venta de parcelas premium en el sur de Chile. Ultimas unidades disponibles. Agenda tu visita con Alma Mater Sur.";
+    }
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    const ogImage = document.querySelector('meta[property="og:image"]');
+
+    if (ogTitle) ogTitle.content = `${brandName} | Parcelas premium en el sur de Chile`;
+    if (ogDescription) {
+      ogDescription.content =
+        "Venta de parcelas premium en el sur de Chile. Ultimas unidades disponibles y atencion comercial directa.";
+    }
+    if (ogImage) ogImage.content = appConfig.ogImage || appConfig.heroImage || "";
   }
 
   function renderNavigation() {
@@ -104,12 +159,13 @@
     refs.heroProjects.innerHTML = projectData
       .map(
         (project) => `
-          <article class="hero-project-card">
+          <article class="hero-project-card" data-project-id="${project.id}">
             ${createHeroVisualMarkup(project)}
             <strong>${project.name}</strong>
             <span>${project.location}</span>
+            ${createQuickFactsMarkup(project)}
             <p class="hero-project-line">${project.tagline || "Ultimas unidades disponibles"}</p>
-            <a class="hero-card-btn" href="${project.pagePath || `${project.id}.html`}">Visitar proyecto</a>
+            <a class="hero-card-btn" href="${project.pagePath || `${project.id}.html`}" data-track="click_proyecto" data-track-label="hero_project" data-project-id="${project.id}">Visitar proyecto</a>
           </article>
         `
       )
@@ -140,6 +196,13 @@
         `
       )
       .join("");
+
+    refs.contactList.querySelectorAll("a").forEach((link, index) => {
+      const item = items[index];
+      if (!item) return;
+      link.dataset.track = item.type === "whatsapp" ? "click_whatsapp" : "click_contacto";
+      link.dataset.trackLabel = item.type;
+    });
 
     refs.footerMeta.innerHTML = `
       <p>${appConfig.contact?.phoneLabel || ""}</p>
@@ -186,6 +249,28 @@
     });
   }
 
+  function trackEvent(eventName, params = {}) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: eventName, ...params });
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", eventName, params);
+    }
+  }
+
+  function bindConversionTracking() {
+    document.addEventListener("click", (event) => {
+      const target = event.target.closest("[data-track]");
+      if (!target) return;
+
+      trackEvent(target.dataset.track, {
+        label: target.dataset.trackLabel || "",
+        project_id: target.dataset.projectId || target.closest("[data-project-id]")?.dataset.projectId || "",
+        href: target.getAttribute("href") || ""
+      });
+    });
+  }
+
   function bindContactForm() {
     if (!refs.form || !refs.formResponse) return;
 
@@ -213,6 +298,7 @@
     renderHeroProjects();
     renderContact();
     bindNavigation();
+    bindConversionTracking();
     bindContactForm();
   }
 

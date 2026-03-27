@@ -4,8 +4,13 @@
 const siteConfig = {
   brandName: "Alma Mater Sur",
   brandTagline: "Parcelas premium en el sur de Chile",
+  heroTitle: "Las ultimas oportunidades para invertir en parcelas premium",
+  heroText: "Invierte en tranquilidad, naturaleza y alta plusvalia en el sur de Chile.",
+  heroUrgency: "Ultimas unidades disponibles - agenda tu visita hoy.",
   heroImage:
     "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80",
+  ogImage:
+    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
   website: "https://www.almamatersur.cl",
   copyright: "2026 Alma Mater Sur. Todos los derechos reservados.",
   contact: {
@@ -34,6 +39,11 @@ const projects = [
     tagline: "Ultimas unidades disponibles",
     description:
       "Descripcion breve editable para presentar atributos del proyecto, conectividad, entorno y propuesta de valor.",
+    quickFacts: [
+      { type: "distance", text: "A 25 min de ciudad editable" },
+      { type: "area", text: "Parcelas desde 5.000 m2" },
+      { type: "price", text: "Precios desde $XX.XXX.XXX" }
+    ],
     badge: "Ultimas unidades disponibles",
     gallery: [
       "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80",
@@ -69,6 +79,11 @@ const projects = [
     tagline: "Parcelas listas para presentar",
     description:
       "Texto editable para resumir paisaje, plusvalia, acceso y estilo de vida asociado al proyecto.",
+    quickFacts: [
+      { type: "distance", text: "A 35 min de ciudad editable" },
+      { type: "area", text: "Parcelas desde 5.000 m2" },
+      { type: "price", text: "Precios desde $XX.XXX.XXX" }
+    ],
     badge: "Ultimas unidades disponibles",
     gallery: [
       "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
@@ -104,6 +119,11 @@ const projects = [
     tagline: "Oportunidad de inversion editable",
     description:
       "Contenido editable para destacar atributos del proyecto, cercania a servicios y nivel comercial.",
+    quickFacts: [
+      { type: "distance", text: "A 20 min de ciudad editable" },
+      { type: "area", text: "Parcelas desde 5.000 m2" },
+      { type: "price", text: "Precios desde $XX.XXX.XXX" }
+    ],
     badge: "Ultimas unidades disponibles",
     gallery: [
       "https://images.unsplash.com/photo-1508766206392-8bd5cf550d1a?auto=format&fit=crop&w=1200&q=80",
