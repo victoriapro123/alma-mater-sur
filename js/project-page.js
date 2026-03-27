@@ -47,6 +47,20 @@
     return `<div class="logo-placeholder${safeClass}" aria-label="Logo placeholder ${project.name}">${getInitials(project.name)}</div>`;
   }
 
+  function createProjectHeroMediaMarkup() {
+    const heroImage = project.coverImage || project.gallery?.[0];
+
+    if (heroImage) {
+      return `
+        <figure class="project-hero-visual">
+          <img class="project-hero-photo" src="${heroImage}" alt="${project.name}" loading="lazy" />
+        </figure>
+      `;
+    }
+
+    return createLogoMarkup("project-section-logo");
+  }
+
   function iconSvg(type) {
     const icons = {
       phone:
@@ -187,7 +201,7 @@
         <div class="container hero-shell project-detail-shell">
           <div class="project-detail-card reveal">
             <div class="project-detail-brand">
-              ${createLogoMarkup("project-section-logo")}
+              ${createProjectHeroMediaMarkup()}
               <div class="project-detail-copy">
                 <p class="eyebrow">Proyecto destacado</p>
                 <h1>${project.name}</h1>
