@@ -44,6 +44,53 @@ body.lightbox-open {
   overflow: hidden;
 }
 
+.home-video-page {
+  background:
+    radial-gradient(circle at top, rgba(143, 179, 146, 0.12), transparent 35%),
+    #08100b;
+}
+
+.page-video-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+  pointer-events: none;
+  background: #08100b;
+}
+
+.page-video-frame,
+.page-video-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.page-video-frame iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw;
+  min-width: 177.78vh;
+  min-height: 100vh;
+  border: 0;
+  transform: translate(-50%, -50%);
+}
+
+.page-video-overlay {
+  background:
+    linear-gradient(180deg, rgba(6, 10, 7, 0.28) 0%, rgba(6, 10, 7, 0.38) 100%),
+    radial-gradient(circle at 20% 20%, rgba(143, 179, 146, 0.12), transparent 38%);
+}
+
+.home-video-page .site-header,
+.home-video-page .hero,
+.home-video-page main,
+.home-video-page .site-footer {
+  position: relative;
+  z-index: 1;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -248,6 +295,10 @@ button {
   background:
     linear-gradient(180deg, rgba(6, 10, 7, 0.08) 0%, rgba(6, 10, 7, 0.24) 100%),
     radial-gradient(circle at 20% 20%, rgba(143, 179, 146, 0.14), transparent 38%);
+}
+
+.home-video-page .hero-media {
+  opacity: 0.12;
 }
 
 .hero-shell {
